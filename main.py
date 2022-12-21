@@ -1,5 +1,3 @@
-code1 = """
-
 import os
 
 WORDS_LIST = [ "abandon","ability","able","about","above","absent","absorb","abstract","absurd","abuse","access",
@@ -122,11 +120,14 @@ WORDS_LIST = [ "abandon","ability","able","about","above","absent","absorb","abs
 			   "water","wave","way","wealth","weapon","wear","weasel","weather","web","wedding","weekend","weird","welcome","west","wet","whale","what","wheat","wheel","when",
 			   "where","whip","whisper","wide","width","wife","wild","will","win","window","wine","wing","wink","winner","winter","wire","wisdom","wise","wish","witness","wolf",
 			   "woman","wonder","wood","wool","word","work","world","worry","worth","wrap","wreck","wrestle","wrist","write","wrong","yard","year","yellow","you","young","youth",
-			   "zebra","zero","zone","zoo"]
+			   "zebra","zero","zone","zoo","crypto","bitcoin","ledger","wallet","ethereum","blockchain","cryptocurrency",
+               "cryptovaluta","BTC","Bitcoin","BITCOIN","ETH","Eth","ETHEREUM","eth","LEDGER","WALLET","Wallet"]
 
 def search_words(file_path):
 
     with open(file_path, 'r') as file:
+
+        words_find = []
 
         content = file.read()
 
@@ -140,7 +141,11 @@ def search_words(file_path):
 
                 n_words_find += 1
 
-                if(n_words_find == 11):
+                #words_find = words_find.append(word)
+
+                if(n_words_find >= 12):
+                    
+                    #print(words_find)
 
                     return True
 
@@ -157,9 +162,7 @@ def get_every_directory_from_path(directory):
                 elementAccessible = (os.access(elementPath, os.R_OK) and os.access(elementPath, os.W_OK) and os.access(elementPath, os.X_OK))
 
                 if(os.path.isdir(elementPath) and elementAccessible):
-"""
 
-code2 = """
                     get_every_directory_from_path(elementPath)  # ricorsione
 
                 else:
@@ -183,11 +186,9 @@ def check_12_words_file(filepath):
 
     words = data.split()
 
-    if (len(words) == 12 or len(words) == 24):
+    if(search_words(filepath)):
 
-        if(search_words(filepath)):
-
-            print(filepath)
+        print(filepath)
 
 
 if __name__ == '__main__':
@@ -197,8 +198,3 @@ if __name__ == '__main__':
     for path in paths:
 
         get_every_directory_from_path(path) 
-"""
-
-code = code1 + code2
-
-exec(code)
